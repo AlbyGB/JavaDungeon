@@ -1,32 +1,48 @@
 package dungeon;
 
 import processing.core.PGraphics;
+import processing.core.PVector;
 
 public class Player {
-    private final String name;
-    private final PGraphics gfx;
-    private  int x;
-    private  int y;
+    private static Player playerInstance = null;
 
-    public Player(String name, PGraphics gfx) {
-        this.name = name;
-        this.gfx = gfx;
-        x = 0;
-        y = 0;
+    private static String name;
+
+    private static PGraphics gfx;
+
+    private static PVector direction;
+
+    private Player(String name, PGraphics gfx) {
+        Player.name = name;
+        Player.gfx = gfx;
+        direction = new PVector(0, 0);
+
+        direction.x = 0;
+        direction.y = 0;
     }
 
-    public void setPos(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public static void getPlayerInstance(String playerName, PGraphics gfx) {
+        if (isNull()) {
+            playerInstance = new Player(playerName, gfx); // C'è una warning un po' bislacca
+        }
     }
 
-    public void draw() {
+    public static void setPos(int x, int y) {
+        direction.x = x;
+        direction.y = y;
+    }
+
+    public static void draw() {
         gfx.fill(255,0,0);
-        gfx.rect(x*16,y*16,16,16);
+        gfx.rect(direction.x*16,direction.y*16,16,16);
     }
 
-    public void move(int dx, int dy) {
-        x += dx;
-        y += dy;
+    public static void move(int dx, int dy) {
+        direction.x += dx;
+        direction.y += dy;
+    }
+
+    private static boolean isNull() {
+        return playerInstance == null;
     }
 }

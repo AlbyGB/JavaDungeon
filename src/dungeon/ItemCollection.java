@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class ItemCollection {
 
-    private Vector<Item> contenuto;
+    private final Vector<Item> contenuto;
 
     public ItemCollection(Vector<Item> contenuto) {
         this.contenuto = contenuto;
@@ -19,14 +19,14 @@ public class ItemCollection {
         contenuto.add(item);
     }
 
-    public int elementi(){
+    public int elementi() {
         return contenuto.size();
     }
 
     public String elementiContenuti(){
         var sg = new StringJoiner(",");
-        for(int i = 0; i < contenuto.size(); i++){
-            sg.add(contenuto.get(i).getNome());
+        for (Item item : contenuto) {
+            sg.add(item.getNome());
         }
         return sg.toString();
     }

@@ -3,11 +3,8 @@ package dungeon;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 
-public class App extends PApplet {
-
-    private Player player;
-
-    public App() {
+public class MainGame extends PApplet {
+    public MainGame() {
 
     }
 
@@ -18,8 +15,8 @@ public class App extends PApplet {
 
     @Override
     public void setup() {
-        player = new Player("Hero",getGraphics());
-        player.setPos(10,10);
+        Player.getPlayerInstance("Giovanni", getGraphics());
+        Player.setPos(10,10);
 
     }
 
@@ -28,7 +25,7 @@ public class App extends PApplet {
         background(55);
         update();
 
-        player.draw();
+        Player.draw();
     }
 
 
@@ -36,10 +33,10 @@ public class App extends PApplet {
     @Override
     public void keyPressed(KeyEvent event) {
         switch (event.getKeyCode()) {
-            case 65 -> player.move(-1, 0);
-            case 68 -> player.move(1, 0);
-            case 87 -> player.move(0,-1);
-            case 83 -> player.move(0,1);
+            case 65 -> Player.move(-1, 0);
+            case 68 -> Player.move(1, 0);
+            case 87 -> Player.move(0,-1);
+            case 83 -> Player.move(0,1);
         }
 
     }
@@ -49,6 +46,6 @@ public class App extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.main("dungeon.App");
+        PApplet.main("dungeon.MainGame");
     }
 }
