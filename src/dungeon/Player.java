@@ -16,9 +16,6 @@ public class Player {
         Player.name = name;
         Player.gfx = gfx;
         direction = new PVector(0, 0);
-
-        direction.x = 0;
-        direction.y = 0;
     }
 
     public static void getPlayerInstance(String playerName, PGraphics gfx) {
