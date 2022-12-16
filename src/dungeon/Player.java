@@ -20,7 +20,7 @@ public class Player {
 
     public static void getPlayerInstance(String playerName, PGraphics gfx) {
         if (isNull()) {
-            playerInstance = new Player(playerName, gfx); // C'è una warning un po' bislacca
+            playerInstance = new Player(playerName, gfx);
         }
     }
 
